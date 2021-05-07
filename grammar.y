@@ -154,7 +154,7 @@ construct_repeat :
     }
     stmt_list 
     T_UNTIL 
-    T_LPAR { @$.begin.line = INSTRUCTION_NEXT; }
+    T_LPAR
     l_expr 
     T_RPAR
     {
@@ -164,7 +164,7 @@ construct_repeat :
       int jump_dst = @1.begin.line;
       // TODO: Generate a jump-if-zero (OP_JZ) to the address stored in the first semantic
       // action of this rule
-      itab_instruction_add (itab, OP_JZ, @4.begin.line, NOARG, jump_dst);
+      itab_instruction_add (itab, OP_JZ, DEFINE_ME, NOARG, jump_dst);
     }
     ;
 

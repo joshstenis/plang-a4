@@ -750,7 +750,7 @@ namespace yy {
       int jump_dst = yystack_[7].location.begin.line;
       // TODO: Generate a jump-if-zero (OP_JZ) to the address stored in the first semantic
       // action of this rule
-      itab_instruction_add (itab, OP_JZ, yystack_[4].location.begin.line, NOARG, jump_dst);
+      itab_instruction_add (itab, OP_JZ, yystack_[2].location.begin.line, NOARG, jump_dst);
     }
 #line 756 "simple.cc"
     break;
