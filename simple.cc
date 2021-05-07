@@ -271,10 +271,10 @@ namespace yy {
         break;
 
       case 19: // T_INTEGER
-      case 55: // op_rel
-      case 57: // declaration
-      case 58: // array_size
-      case 59: // datatype
+      case 54: // op_rel
+      case 56: // declaration
+      case 57: // array_size
+      case 58: // datatype
         value.YY_MOVE_OR_COPY< int > (YY_MOVE (that.value));
         break;
 
@@ -282,18 +282,18 @@ namespace yy {
         value.YY_MOVE_OR_COPY< string > (YY_MOVE (that.value));
         break;
 
-      case 54: // l_expr
-      case 56: // assignment
-      case 60: // a_expr
-      case 61: // a_term
-      case 62: // a_fact
-      case 63: // varref
-      case 64: // arr_index
+      case 53: // l_expr
+      case 55: // assignment
+      case 59: // a_expr
+      case 60: // a_term
+      case 61: // a_fact
+      case 62: // varref
+      case 63: // arr_index
         value.YY_MOVE_OR_COPY< symbol_t* > (YY_MOVE (that.value));
         break;
 
-      case 67: // varlist
-      case 68: // expr_list
+      case 66: // varlist
+      case 67: // expr_list
         value.YY_MOVE_OR_COPY< vector<symbol_t*>  > (YY_MOVE (that.value));
         break;
 
@@ -317,10 +317,10 @@ namespace yy {
         break;
 
       case 19: // T_INTEGER
-      case 55: // op_rel
-      case 57: // declaration
-      case 58: // array_size
-      case 59: // datatype
+      case 54: // op_rel
+      case 56: // declaration
+      case 57: // array_size
+      case 58: // datatype
         value.move< int > (YY_MOVE (that.value));
         break;
 
@@ -328,18 +328,18 @@ namespace yy {
         value.move< string > (YY_MOVE (that.value));
         break;
 
-      case 54: // l_expr
-      case 56: // assignment
-      case 60: // a_expr
-      case 61: // a_term
-      case 62: // a_fact
-      case 63: // varref
-      case 64: // arr_index
+      case 53: // l_expr
+      case 55: // assignment
+      case 59: // a_expr
+      case 60: // a_term
+      case 61: // a_fact
+      case 62: // varref
+      case 63: // arr_index
         value.move< symbol_t* > (YY_MOVE (that.value));
         break;
 
-      case 67: // varlist
-      case 68: // expr_list
+      case 66: // varlist
+      case 67: // expr_list
         value.move< vector<symbol_t*>  > (YY_MOVE (that.value));
         break;
 
@@ -363,10 +363,10 @@ namespace yy {
         break;
 
       case 19: // T_INTEGER
-      case 55: // op_rel
-      case 57: // declaration
-      case 58: // array_size
-      case 59: // datatype
+      case 54: // op_rel
+      case 56: // declaration
+      case 57: // array_size
+      case 58: // datatype
         value.move< int > (that.value);
         break;
 
@@ -374,18 +374,18 @@ namespace yy {
         value.move< string > (that.value);
         break;
 
-      case 54: // l_expr
-      case 56: // assignment
-      case 60: // a_expr
-      case 61: // a_term
-      case 62: // a_fact
-      case 63: // varref
-      case 64: // arr_index
+      case 53: // l_expr
+      case 55: // assignment
+      case 59: // a_expr
+      case 60: // a_term
+      case 61: // a_fact
+      case 62: // varref
+      case 63: // arr_index
         value.move< symbol_t* > (that.value);
         break;
 
-      case 67: // varlist
-      case 68: // expr_list
+      case 66: // varlist
+      case 67: // expr_list
         value.move< vector<symbol_t*>  > (that.value);
         break;
 
@@ -643,10 +643,10 @@ namespace yy {
         break;
 
       case 19: // T_INTEGER
-      case 55: // op_rel
-      case 57: // declaration
-      case 58: // array_size
-      case 59: // datatype
+      case 54: // op_rel
+      case 56: // declaration
+      case 57: // array_size
+      case 58: // datatype
         yylhs.value.emplace< int > ();
         break;
 
@@ -654,18 +654,18 @@ namespace yy {
         yylhs.value.emplace< string > ();
         break;
 
-      case 54: // l_expr
-      case 56: // assignment
-      case 60: // a_expr
-      case 61: // a_term
-      case 62: // a_fact
-      case 63: // varref
-      case 64: // arr_index
+      case 53: // l_expr
+      case 55: // assignment
+      case 59: // a_expr
+      case 60: // a_term
+      case 61: // a_fact
+      case 62: // varref
+      case 63: // arr_index
         yylhs.value.emplace< symbol_t* > ();
         break;
 
-      case 67: // varlist
-      case 68: // expr_list
+      case 66: // varlist
+      case 67: // expr_list
         yylhs.value.emplace< vector<symbol_t*>  > ();
         break;
 
@@ -736,26 +736,20 @@ namespace yy {
     break;
 
   case 18:
-#line 157 "grammar.y"
-    { yylhs.location.begin.line = INSTRUCTION_NEXT; }
-#line 742 "simple.cc"
-    break;
-
-  case 19:
 #line 160 "grammar.y"
     {
       // Second semantic action.
       // TODO: Retrieve the value stored in the stack in the first semantic action
       // above (the second symbol)
-      int jump_dst = yystack_[7].location.begin.line;
+      int jump_dst = yystack_[5].location.begin.line;
       // TODO: Generate a jump-if-zero (OP_JZ) to the address stored in the first semantic
       // action of this rule
-      itab_instruction_add (itab, OP_JZ, yystack_[2].location.begin.line, NOARG, jump_dst);
+      itab_instruction_add (itab, OP_JZ, yystack_[1].value.as < symbol_t* > ()->addr, NOARG, jump_dst);
     }
-#line 756 "simple.cc"
+#line 750 "simple.cc"
     break;
 
-  case 20:
+  case 19:
 #line 176 "grammar.y"
     {
       // First semantic action
@@ -763,10 +757,10 @@ namespace yy {
       itab_instruction_add (itab, OP_JZ, yystack_[1].value.as < symbol_t* > ()->addr, NOARG, yystack_[0].location.begin.line);
       yylhs.location.begin.line = INSTRUCTION_LAST;
     }
-#line 767 "simple.cc"
+#line 761 "simple.cc"
     break;
 
-  case 21:
+  case 20:
 #line 183 "grammar.y"
     {
       // Second semantic action
@@ -776,28 +770,28 @@ namespace yy {
       int jmp_entry = yystack_[1].location.begin.line;
       itab->tab[jmp_entry]->addr3 = INSTRUCTION_NEXT;
     }
-#line 780 "simple.cc"
+#line 774 "simple.cc"
     break;
 
-  case 22:
+  case 21:
 #line 192 "grammar.y"
     {
       // Third semantic action
       int jmp_entry = yystack_[1].location.begin.line;
       itab->tab[jmp_entry]->addr3 = INSTRUCTION_NEXT;
     }
-#line 790 "simple.cc"
+#line 784 "simple.cc"
     break;
 
-  case 23:
+  case 22:
 #line 201 "grammar.y"
     { 
         yylhs.location.begin.line = INSTRUCTION_NEXT;
       }
-#line 798 "simple.cc"
+#line 792 "simple.cc"
     break;
 
-  case 26:
+  case 25:
 #line 211 "grammar.y"
     {
           symbol_t * res;
@@ -805,34 +799,34 @@ namespace yy {
           itab_instruction_add (itab, yystack_[1].value.as < int > (), res->addr, yystack_[2].value.as < symbol_t* > ()->addr, yystack_[0].value.as < symbol_t* > ()->addr);
           yylhs.value.as < symbol_t* > () = res;
         }
+#line 803 "simple.cc"
+    break;
+
+  case 26:
+#line 220 "grammar.y"
+    { yylhs.value.as < int > () = OP_LT; }
 #line 809 "simple.cc"
     break;
 
   case 27:
-#line 220 "grammar.y"
-    { yylhs.value.as < int > () = OP_LT; }
+#line 221 "grammar.y"
+    { yylhs.value.as < int > () = OP_GT; }
 #line 815 "simple.cc"
     break;
 
   case 28:
-#line 221 "grammar.y"
-    { yylhs.value.as < int > () = OP_GT; }
+#line 222 "grammar.y"
+    { yylhs.value.as < int > () = OP_LEQ; }
 #line 821 "simple.cc"
     break;
 
   case 29:
-#line 222 "grammar.y"
-    { yylhs.value.as < int > () = OP_LEQ; }
+#line 223 "grammar.y"
+    { yylhs.value.as < int > () = OP_GEQ; }
 #line 827 "simple.cc"
     break;
 
   case 30:
-#line 223 "grammar.y"
-    { yylhs.value.as < int > () = OP_GEQ; }
-#line 833 "simple.cc"
-    break;
-
-  case 31:
 #line 227 "grammar.y"
     {
       symbol_t * sym = symbol_find (symtab, yystack_[3].value.as < string > ());
@@ -881,10 +875,10 @@ namespace yy {
       }
       yylhs.value.as < symbol_t* > () = src_temp;
     }
-#line 885 "simple.cc"
+#line 879 "simple.cc"
     break;
 
-  case 32:
+  case 31:
 #line 276 "grammar.y"
     { 
       assert (symtab);
@@ -897,37 +891,37 @@ namespace yy {
       assert (sym);
       symbol_add (symtab, sym);
     }
-#line 901 "simple.cc"
+#line 895 "simple.cc"
     break;
 
-  case 33:
+  case 32:
 #line 290 "grammar.y"
     { 
             assert (yystack_[1].value.as < int > () > 0 && "Array size cannot be <= 0."); 
             yylhs.value.as < int > () = yystack_[1].value.as < int > (); 
           }
+#line 904 "simple.cc"
+    break;
+
+  case 33:
+#line 294 "grammar.y"
+    { yylhs.value.as < int > () = 1; }
 #line 910 "simple.cc"
     break;
 
   case 34:
-#line 294 "grammar.y"
-    { yylhs.value.as < int > () = 1; }
+#line 297 "grammar.y"
+    { yylhs.value.as < int > () = DTYPE_INT; }
 #line 916 "simple.cc"
     break;
 
   case 35:
-#line 297 "grammar.y"
-    { yylhs.value.as < int > () = DTYPE_INT; }
+#line 298 "grammar.y"
+    { yylhs.value.as < int > () = DTYPE_FLOAT; }
 #line 922 "simple.cc"
     break;
 
   case 36:
-#line 298 "grammar.y"
-    { yylhs.value.as < int > () = DTYPE_FLOAT; }
-#line 928 "simple.cc"
-    break;
-
-  case 37:
 #line 302 "grammar.y"
     {
         if (yystack_[2].value.as < symbol_t* > ()->datatype != yystack_[0].value.as < symbol_t* > ()->datatype)
@@ -954,10 +948,10 @@ namespace yy {
         cout << "On a_expr (1)\n";
         #endif
       }
-#line 958 "simple.cc"
+#line 952 "simple.cc"
     break;
 
-  case 38:
+  case 37:
 #line 328 "grammar.y"
     {
         // TASK: Abort if the datatype of a_expr and a_term differ.
@@ -980,10 +974,10 @@ namespace yy {
         cout << "On a_expr (2)\n";
         #endif
       }
-#line 984 "simple.cc"
+#line 978 "simple.cc"
     break;
 
-  case 39:
+  case 38:
 #line 350 "grammar.y"
     {
         yylhs.value.as < symbol_t* > () = yystack_[0].value.as < symbol_t* > ();
@@ -991,10 +985,10 @@ namespace yy {
         cout << "On a_expr (3)\n";
         #endif
       }
-#line 995 "simple.cc"
+#line 989 "simple.cc"
     break;
 
-  case 40:
+  case 39:
 #line 359 "grammar.y"
     {
         // TASK: Abort if the datatype of a_expr and a_term differ.
@@ -1014,10 +1008,10 @@ namespace yy {
         }
         yylhs.value.as < symbol_t* > () = res;
       }
-#line 1018 "simple.cc"
+#line 1012 "simple.cc"
     break;
 
-  case 41:
+  case 40:
 #line 378 "grammar.y"
     {
         // TASK: Abort if the datatype of a_expr and a_term differ.
@@ -1038,10 +1032,10 @@ namespace yy {
         yylhs.value.as < symbol_t* > () = res;
         
       }
-#line 1042 "simple.cc"
+#line 1036 "simple.cc"
     break;
 
-  case 42:
+  case 41:
 #line 398 "grammar.y"
     {
         yylhs.value.as < symbol_t* > () = yystack_[0].value.as < symbol_t* > ();
@@ -1049,10 +1043,10 @@ namespace yy {
         cout << "On a_term (3)\n";
         #endif
       }
-#line 1053 "simple.cc"
+#line 1047 "simple.cc"
     break;
 
-  case 43:
+  case 42:
 #line 407 "grammar.y"
     {
         symbol_t * res;
@@ -1061,10 +1055,10 @@ namespace yy {
         itab_instruction_add (itab, OP_LOAD, res->addr, yystack_[0].value.as < symbol_t* > ()->datatype, yystack_[0].value.as < symbol_t* > ()->addr);
         yylhs.value.as < symbol_t* > () = res;
       }
-#line 1065 "simple.cc"
+#line 1059 "simple.cc"
     break;
 
-  case 44:
+  case 43:
 #line 415 "grammar.y"
     {
         symbol_t * res;
@@ -1074,10 +1068,10 @@ namespace yy {
         stptr+=4;
         yylhs.value.as < symbol_t* > () = res;
       }
-#line 1078 "simple.cc"
+#line 1072 "simple.cc"
     break;
 
-  case 45:
+  case 44:
 #line 424 "grammar.y"
     { 
         // TASK: Complete implementation in a fashion similar to the rule a_fact -> T_INTEGER. 
@@ -1089,16 +1083,16 @@ namespace yy {
         stptr+=4;
         yylhs.value.as < symbol_t* > () = res;
       }
+#line 1087 "simple.cc"
+    break;
+
+  case 45:
+#line 434 "grammar.y"
+    { yylhs.value.as < symbol_t* > () = yystack_[1].value.as < symbol_t* > (); }
 #line 1093 "simple.cc"
     break;
 
   case 46:
-#line 434 "grammar.y"
-    { yylhs.value.as < symbol_t* > () = yystack_[1].value.as < symbol_t* > (); }
-#line 1099 "simple.cc"
-    break;
-
-  case 47:
 #line 436 "grammar.y"
     {
         symbol_t * res;
@@ -1106,18 +1100,18 @@ namespace yy {
         itab_instruction_add (itab, OP_UMIN, res->addr, yystack_[0].value.as < symbol_t* > ()->datatype, yystack_[0].value.as < symbol_t* > ()->addr);
         yylhs.value.as < symbol_t* > () = res;
       }
-#line 1110 "simple.cc"
+#line 1104 "simple.cc"
     break;
 
-  case 48:
+  case 47:
 #line 443 "grammar.y"
     {
         yylhs.value.as < symbol_t* > () = NULL;
       }
-#line 1118 "simple.cc"
+#line 1112 "simple.cc"
     break;
 
-  case 49:
+  case 48:
 #line 449 "grammar.y"
     {
       symbol_t * sym = symbol_find (symtab, yystack_[1].value.as < string > ());
@@ -1145,22 +1139,22 @@ namespace yy {
         yylhs.value.as < symbol_t* > () = temp;
       }
     }
+#line 1143 "simple.cc"
+    break;
+
+  case 49:
+#line 477 "grammar.y"
+    { yylhs.value.as < symbol_t* > () = yystack_[1].value.as < symbol_t* > (); }
 #line 1149 "simple.cc"
     break;
 
   case 50:
-#line 477 "grammar.y"
-    { yylhs.value.as < symbol_t* > () = yystack_[1].value.as < symbol_t* > (); }
+#line 478 "grammar.y"
+    { yylhs.value.as < symbol_t* > () = NULL; }
 #line 1155 "simple.cc"
     break;
 
   case 51:
-#line 478 "grammar.y"
-    { yylhs.value.as < symbol_t* > () = NULL; }
-#line 1161 "simple.cc"
-    break;
-
-  case 52:
 #line 482 "grammar.y"
     {
       vector_itersym_t iter;
@@ -1174,10 +1168,10 @@ namespace yy {
         itab_instruction_add (itab, OP_READ, (*iter)->addr, (*iter)->datatype, NOARG);
       }
     }
-#line 1178 "simple.cc"
+#line 1172 "simple.cc"
     break;
 
-  case 53:
+  case 52:
 #line 497 "grammar.y"
     {
       vector_itersym_t iter;
@@ -1191,22 +1185,22 @@ namespace yy {
         itab_instruction_add (itab, OP_WRITE, (*iter)->addr, (*iter)->datatype, NOARG);
       }
     }
+#line 1189 "simple.cc"
+    break;
+
+  case 53:
+#line 511 "grammar.y"
+    { yystack_[2].value.as < vector<symbol_t*>  > ().push_back (yystack_[0].value.as < symbol_t* > ()); yylhs.value.as < vector<symbol_t*>  > () = yystack_[2].value.as < vector<symbol_t*>  > (); }
 #line 1195 "simple.cc"
     break;
 
   case 54:
-#line 511 "grammar.y"
-    { yystack_[2].value.as < vector<symbol_t*>  > ().push_back (yystack_[0].value.as < symbol_t* > ()); yylhs.value.as < vector<symbol_t*>  > () = yystack_[2].value.as < vector<symbol_t*>  > (); }
+#line 512 "grammar.y"
+    { yylhs.value.as < vector<symbol_t*>  > ().push_back (yystack_[0].value.as < symbol_t* > ()); }
 #line 1201 "simple.cc"
     break;
 
   case 55:
-#line 512 "grammar.y"
-    { yylhs.value.as < vector<symbol_t*>  > ().push_back (yystack_[0].value.as < symbol_t* > ()); }
-#line 1207 "simple.cc"
-    break;
-
-  case 56:
 #line 516 "grammar.y"
     { 
       yystack_[2].value.as < vector<symbol_t*>  > ().push_back (yystack_[0].value.as < symbol_t* > ()); yylhs.value.as < vector<symbol_t*>  > () = yystack_[2].value.as < vector<symbol_t*>  > (); 
@@ -1214,10 +1208,10 @@ namespace yy {
       cout << "In expr_list (1)\n";
       #endif
     }
-#line 1218 "simple.cc"
+#line 1212 "simple.cc"
     break;
 
-  case 57:
+  case 56:
 #line 523 "grammar.y"
     { 
       yylhs.value.as < vector<symbol_t*>  > ().push_back (yystack_[0].value.as < symbol_t* > ()); 
@@ -1225,11 +1219,11 @@ namespace yy {
       cout << "In expr_list (2)\n";
       #endif
     }
-#line 1229 "simple.cc"
+#line 1223 "simple.cc"
     break;
 
 
-#line 1233 "simple.cc"
+#line 1227 "simple.cc"
 
             default:
               break;
@@ -1500,119 +1494,117 @@ namespace yy {
   }
 
 
-  const signed char simple_parser::yypact_ninf_ = -50;
+  const signed char simple_parser::yypact_ninf_ = -53;
 
   const signed char simple_parser::yytable_ninf_ = -1;
 
   const signed char
   simple_parser::yypact_[] =
   {
-      51,   -50,   -50,    23,     1,     7,    51,   -50,   -50,     9,
-      28,    26,   -50,   -50,   -50,   -50,   -50,   -50,   -50,    24,
-     -50,   -50,     7,   -50,    30,     1,   -50,   -50,   -50,     1,
-       8,    22,   -50,   -50,    31,     1,    43,    10,    51,    19,
-       1,   -50,    51,    36,   -50,    23,   -50,    -1,     1,     1,
-       1,     1,     1,     5,     1,    51,   -50,    -8,     1,    27,
-      21,   -50,    40,   -50,   -50,   -50,    22,    22,   -50,   -50,
-       8,   -50,     8,    32,    34,   -50,   -50,   -50,   -50,   -50,
-       1,    49,   -50,   -50,    51,     8,   -50,     1,    42,   -50,
-      37,    51,    41,   -50,   -50,   -50,   -50,    51,   -50
+      45,   -53,   -53,    16,     1,     0,    45,   -53,   -53,   -16,
+      40,    28,   -53,   -53,   -53,   -53,   -53,   -53,   -53,    23,
+     -53,   -53,     0,   -53,    30,     1,   -53,   -53,   -53,     1,
+      18,    19,   -53,   -53,    31,     1,    43,    -5,    45,    22,
+       1,   -53,    45,    33,   -53,    16,   -53,    -1,     1,     1,
+       1,     1,     1,     5,     1,    45,   -53,    -6,     1,    34,
+      27,   -53,    48,   -53,   -53,   -53,    19,    19,   -53,   -53,
+      18,   -53,    18,    39,    42,   -53,   -53,   -53,   -53,   -53,
+       1,    36,     1,   -53,    45,    18,   -53,    44,    49,   -53,
+     -53,    45,    35,   -53,   -53,   -53,    45,   -53
   };
 
   const unsigned char
   simple_parser::yydefact_[] =
   {
-       0,    35,    36,     0,     0,    51,     0,    17,    14,     0,
+       0,    34,    35,     0,     0,    50,     0,    17,    14,     0,
        0,     0,     4,    12,     9,    10,    11,     5,     8,     0,
-       6,     7,    51,    55,    52,     0,    48,    44,    45,     0,
-      57,    39,    42,    43,    53,     0,     0,     0,     0,     0,
-       0,     1,     2,    34,    49,     0,    47,     0,     0,     0,
+       6,     7,    50,    54,    51,     0,    47,    43,    44,     0,
+      56,    38,    41,    42,    52,     0,     0,     0,     0,     0,
+       0,     1,     2,    33,    48,     0,    46,     0,     0,     0,
        0,     0,     0,     0,     0,     0,    13,     0,     0,     0,
-       0,     3,     0,    32,    54,    46,    37,    38,    40,    41,
-      56,    50,    31,     0,     0,    20,    27,    28,    29,    30,
-       0,     0,    18,    15,     0,    26,    33,     0,     0,    21,
-       0,     0,    25,    19,    16,    23,    22,     0,    24
+       0,     3,     0,    31,    53,    45,    36,    37,    39,    40,
+      55,    49,    30,     0,     0,    19,    26,    27,    28,    29,
+       0,     0,     0,    15,     0,    25,    32,     0,     0,    20,
+      18,     0,    24,    16,    22,    21,     0,    23
   };
 
   const signed char
   simple_parser::yypgoto_[] =
   {
-     -50,   -50,    -3,   -40,   -50,   -50,   -50,   -50,   -50,   -50,
-     -50,   -50,   -50,   -50,   -50,   -50,   -49,   -50,   -50,   -50,
-     -50,   -50,    -4,   -31,   -17,    -2,    53,   -50,   -50,   -50,
-     -50
+     -53,   -53,    -3,   -40,   -53,   -53,   -53,   -53,   -53,   -53,
+     -53,   -53,   -53,   -53,   -53,   -52,   -53,   -53,   -53,   -53,
+     -53,    -4,   -20,   -12,    -2,    55,   -53,   -53,   -53,   -53
   };
 
   const signed char
   simple_parser::yydefgoto_[] =
   {
       -1,    10,    11,    12,    13,    14,    39,    88,    15,    38,
-      87,    16,    84,    92,    96,    97,    59,    80,    17,    18,
-      63,    19,    60,    31,    32,    33,    36,    20,    21,    24,
-      34
+      16,    84,    92,    95,    96,    59,    80,    17,    18,    63,
+      19,    60,    31,    32,    33,    36,    20,    21,    24,    34
   };
 
   const unsigned char
   simple_parser::yytable_[] =
   {
-      30,    23,    61,    37,    48,    49,    55,    25,    46,    74,
-      48,    49,    26,    48,    49,    61,    73,    66,    67,    22,
-      27,    28,    71,    35,    55,    47,    48,    49,    41,    50,
-      51,    53,    56,    68,    69,    57,    65,    29,    90,    40,
-      42,    22,    43,    64,    89,    45,    52,    54,    70,    58,
-      72,    94,    62,    76,    77,    78,    79,    98,    75,    81,
-       1,     2,    82,     3,     4,    83,    86,    91,    93,     5,
-      95,     0,     6,     0,     7,    44,    85,     8,     9
+      30,    23,    61,    37,    48,    49,    74,    25,    55,    55,
+      48,    49,    26,    46,    40,    61,    35,    56,    73,    22,
+      27,    28,    71,    48,    49,    47,    50,    51,    66,    67,
+      87,    53,    48,    49,    22,    57,    65,    29,    68,    69,
+      41,    43,    42,    64,    89,    45,    52,    54,    70,    62,
+      72,    93,    58,    86,     1,     2,    97,     3,     4,    76,
+      77,    78,    79,     5,    94,    75,     6,    81,     7,    82,
+       0,     8,     9,    83,    91,    90,    85,    44
   };
 
   const signed char
   simple_parser::yycheck_[] =
   {
-       4,     3,    42,     6,     5,     6,    14,     6,    25,    58,
-       5,     6,    11,     5,     6,    55,    24,    48,    49,    18,
-      19,    20,    17,    16,    14,    29,     5,     6,     0,     7,
-       8,    35,    22,    50,    51,    38,    37,    36,    87,    30,
-      14,    18,    18,    45,    84,    15,    15,     4,    52,    30,
-      54,    91,    16,    32,    33,    34,    35,    97,    31,    19,
-       9,    10,    30,    12,    13,    31,    17,    25,    31,    18,
-      29,    -1,    21,    -1,    23,    22,    80,    26,    27
+       4,     3,    42,     6,     5,     6,    58,     6,    14,    14,
+       5,     6,    11,    25,    30,    55,    16,    22,    24,    18,
+      19,    20,    17,     5,     6,    29,     7,     8,    48,    49,
+      82,    35,     5,     6,    18,    38,    37,    36,    50,    51,
+       0,    18,    14,    45,    84,    15,    15,     4,    52,    16,
+      54,    91,    30,    17,     9,    10,    96,    12,    13,    32,
+      33,    34,    35,    18,    29,    31,    21,    19,    23,    30,
+      -1,    26,    27,    31,    25,    31,    80,    22
   };
 
   const unsigned char
   simple_parser::yystos_[] =
   {
        0,     9,    10,    12,    13,    18,    21,    23,    26,    27,
-      39,    40,    41,    42,    43,    46,    49,    56,    57,    59,
-      65,    66,    18,    63,    67,     6,    11,    19,    20,    36,
-      60,    61,    62,    63,    68,    16,    64,    40,    47,    44,
-      30,     0,    14,    18,    64,    15,    62,    60,     5,     6,
-       7,     8,    15,    60,     4,    14,    22,    40,    30,    54,
-      60,    41,    16,    58,    63,    37,    61,    61,    62,    62,
-      60,    17,    60,    24,    54,    31,    32,    33,    34,    35,
-      55,    19,    30,    31,    50,    60,    17,    48,    45,    41,
-      54,    25,    51,    31,    41,    29,    52,    53,    41
+      39,    40,    41,    42,    43,    46,    48,    55,    56,    58,
+      64,    65,    18,    62,    66,     6,    11,    19,    20,    36,
+      59,    60,    61,    62,    67,    16,    63,    40,    47,    44,
+      30,     0,    14,    18,    63,    15,    61,    59,     5,     6,
+       7,     8,    15,    59,     4,    14,    22,    40,    30,    53,
+      59,    41,    16,    57,    62,    37,    60,    60,    61,    61,
+      59,    17,    59,    24,    53,    31,    32,    33,    34,    35,
+      54,    19,    30,    31,    49,    59,    17,    53,    45,    41,
+      31,    25,    50,    41,    29,    51,    52,    41
   };
 
   const unsigned char
   simple_parser::yyr1_[] =
   {
        0,    38,    39,    40,    40,    41,    41,    41,    41,    41,
-      41,    41,    41,    42,    44,    45,    43,    47,    48,    46,
-      50,    51,    49,    53,    52,    52,    54,    55,    55,    55,
-      55,    56,    57,    58,    58,    59,    59,    60,    60,    60,
-      61,    61,    61,    62,    62,    62,    62,    62,    62,    63,
-      64,    64,    65,    66,    67,    67,    68,    68
+      41,    41,    41,    42,    44,    45,    43,    47,    46,    49,
+      50,    48,    52,    51,    51,    53,    54,    54,    54,    54,
+      55,    56,    57,    57,    58,    58,    59,    59,    59,    60,
+      60,    60,    61,    61,    61,    61,    61,    61,    62,    63,
+      63,    64,    65,    66,    66,    67,    67
   };
 
   const unsigned char
   simple_parser::yyr2_[] =
   {
        0,     2,     2,     3,     1,     1,     1,     1,     1,     1,
-       1,     1,     1,     3,     0,     0,     8,     0,     0,     8,
-       0,     0,     8,     0,     3,     0,     3,     1,     1,     1,
-       1,     4,     3,     3,     0,     1,     1,     3,     3,     1,
-       3,     3,     1,     1,     1,     1,     3,     2,     1,     2,
-       3,     0,     2,     2,     3,     1,     3,     1
+       1,     1,     1,     3,     0,     0,     8,     0,     7,     0,
+       0,     8,     0,     3,     0,     3,     1,     1,     1,     1,
+       4,     3,     3,     0,     1,     1,     3,     3,     1,     3,
+       3,     1,     1,     1,     1,     3,     2,     1,     2,     3,
+       0,     2,     2,     3,     1,     3,     1
   };
 
 
@@ -1629,8 +1621,8 @@ namespace yy {
   "T_UNTIL", "T_DO", "T_WHILE", "T_IF", "T_THEN", "T_ELSE", "T_LPAR",
   "T_RPAR", "T_LT", "T_GT", "T_LEQ", "T_GEQ", "'('", "')'", "$accept",
   "program", "stmt_list", "stmt", "block", "construct_while", "$@1", "$@2",
-  "construct_repeat", "$@3", "$@4", "construct_if", "$@5", "$@6",
-  "construct_else", "$@7", "l_expr", "op_rel", "assignment", "declaration",
+  "construct_repeat", "$@3", "construct_if", "$@4", "$@5",
+  "construct_else", "$@6", "l_expr", "op_rel", "assignment", "declaration",
   "array_size", "datatype", "a_expr", "a_term", "a_fact", "varref",
   "arr_index", "read", "write", "varlist", "expr_list", YY_NULLPTR
   };
@@ -1640,11 +1632,11 @@ namespace yy {
   simple_parser::yyrline_[] =
   {
        0,    98,    98,   101,   102,   105,   106,   107,   108,   109,
-     110,   111,   112,   115,   120,   128,   119,   150,   157,   149,
-     176,   183,   172,   201,   200,   205,   210,   220,   221,   222,
-     223,   226,   276,   289,   294,   297,   298,   301,   327,   349,
-     358,   377,   397,   406,   414,   423,   434,   435,   442,   448,
-     477,   478,   481,   496,   511,   512,   515,   522
+     110,   111,   112,   115,   120,   128,   119,   150,   149,   176,
+     183,   172,   201,   200,   205,   210,   220,   221,   222,   223,
+     226,   276,   289,   294,   297,   298,   301,   327,   349,   358,
+     377,   397,   406,   414,   423,   434,   435,   442,   448,   477,
+     478,   481,   496,   511,   512,   515,   522
   };
 
   // Print the state stack on the debug stream.
@@ -1678,7 +1670,7 @@ namespace yy {
 
 
 } // yy
-#line 1682 "simple.cc"
+#line 1674 "simple.cc"
 
 #line 531 "grammar.y"
 

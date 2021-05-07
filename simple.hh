@@ -621,10 +621,10 @@ switch (yytype)
         break;
 
       case 19: // T_INTEGER
-      case 55: // op_rel
-      case 57: // declaration
-      case 58: // array_size
-      case 59: // datatype
+      case 54: // op_rel
+      case 56: // declaration
+      case 57: // array_size
+      case 58: // datatype
         value.template destroy< int > ();
         break;
 
@@ -632,18 +632,18 @@ switch (yytype)
         value.template destroy< string > ();
         break;
 
-      case 54: // l_expr
-      case 56: // assignment
-      case 60: // a_expr
-      case 61: // a_term
-      case 62: // a_fact
-      case 63: // varref
-      case 64: // arr_index
+      case 53: // l_expr
+      case 55: // assignment
+      case 59: // a_expr
+      case 60: // a_term
+      case 61: // a_fact
+      case 62: // varref
+      case 63: // arr_index
         value.template destroy< symbol_t* > ();
         break;
 
-      case 67: // varlist
-      case 68: // expr_list
+      case 66: // varlist
+      case 67: // expr_list
         value.template destroy< vector<symbol_t*>  > ();
         break;
 
@@ -1627,8 +1627,8 @@ switch (yytype)
     enum
     {
       yyeof_ = 0,
-      yylast_ = 78,     ///< Last index in yytable_.
-      yynnts_ = 31,  ///< Number of nonterminal symbols.
+      yylast_ = 77,     ///< Last index in yytable_.
+      yynnts_ = 30,  ///< Number of nonterminal symbols.
       yyfinal_ = 41, ///< Termination state number.
       yyterror_ = 1,
       yyerrcode_ = 256,
@@ -1709,10 +1709,10 @@ switch (yytype)
         break;
 
       case 19: // T_INTEGER
-      case 55: // op_rel
-      case 57: // declaration
-      case 58: // array_size
-      case 59: // datatype
+      case 54: // op_rel
+      case 56: // declaration
+      case 57: // array_size
+      case 58: // datatype
         value.move< int > (std::move (that.value));
         break;
 
@@ -1720,18 +1720,18 @@ switch (yytype)
         value.move< string > (std::move (that.value));
         break;
 
-      case 54: // l_expr
-      case 56: // assignment
-      case 60: // a_expr
-      case 61: // a_term
-      case 62: // a_fact
-      case 63: // varref
-      case 64: // arr_index
+      case 53: // l_expr
+      case 55: // assignment
+      case 59: // a_expr
+      case 60: // a_term
+      case 61: // a_fact
+      case 62: // varref
+      case 63: // arr_index
         value.move< symbol_t* > (std::move (that.value));
         break;
 
-      case 67: // varlist
-      case 68: // expr_list
+      case 66: // varlist
+      case 67: // expr_list
         value.move< vector<symbol_t*>  > (std::move (that.value));
         break;
 
@@ -1755,10 +1755,10 @@ switch (yytype)
         break;
 
       case 19: // T_INTEGER
-      case 55: // op_rel
-      case 57: // declaration
-      case 58: // array_size
-      case 59: // datatype
+      case 54: // op_rel
+      case 56: // declaration
+      case 57: // array_size
+      case 58: // datatype
         value.copy< int > (YY_MOVE (that.value));
         break;
 
@@ -1766,18 +1766,18 @@ switch (yytype)
         value.copy< string > (YY_MOVE (that.value));
         break;
 
-      case 54: // l_expr
-      case 56: // assignment
-      case 60: // a_expr
-      case 61: // a_term
-      case 62: // a_fact
-      case 63: // varref
-      case 64: // arr_index
+      case 53: // l_expr
+      case 55: // assignment
+      case 59: // a_expr
+      case 60: // a_term
+      case 61: // a_fact
+      case 62: // varref
+      case 63: // arr_index
         value.copy< symbol_t* > (YY_MOVE (that.value));
         break;
 
-      case 67: // varlist
-      case 68: // expr_list
+      case 66: // varlist
+      case 67: // expr_list
         value.copy< vector<symbol_t*>  > (YY_MOVE (that.value));
         break;
 
@@ -1808,10 +1808,10 @@ switch (yytype)
         break;
 
       case 19: // T_INTEGER
-      case 55: // op_rel
-      case 57: // declaration
-      case 58: // array_size
-      case 59: // datatype
+      case 54: // op_rel
+      case 56: // declaration
+      case 57: // array_size
+      case 58: // datatype
         value.move< int > (YY_MOVE (s.value));
         break;
 
@@ -1819,18 +1819,18 @@ switch (yytype)
         value.move< string > (YY_MOVE (s.value));
         break;
 
-      case 54: // l_expr
-      case 56: // assignment
-      case 60: // a_expr
-      case 61: // a_term
-      case 62: // a_fact
-      case 63: // varref
-      case 64: // arr_index
+      case 53: // l_expr
+      case 55: // assignment
+      case 59: // a_expr
+      case 60: // a_term
+      case 61: // a_fact
+      case 62: // varref
+      case 63: // arr_index
         value.move< symbol_t* > (YY_MOVE (s.value));
         break;
 
-      case 67: // varlist
-      case 68: // expr_list
+      case 66: // varlist
+      case 67: // expr_list
         value.move< vector<symbol_t*>  > (YY_MOVE (s.value));
         break;
 
