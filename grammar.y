@@ -175,13 +175,13 @@ construct_if :
     T_RPAR 
     {
       // First semantic action
-      itab_instruction_add (itab, OP_JZ, $3->addr, NOARG, TBDARG);
+      itab_instruction_add (itab, OP_JZ, $3->addr, NOARG, $6->addr);
       @$.begin.line = INSTRUCTION_LAST;
     }
     stmt 
     {
       // Second semantic action
-      itab_instruction_add (itab, OP_JMP, NOARG, NOARG, TBDARG);
+      itab_instruction_add (itab, OP_JMP, NOARG, NOARG, @4.begin.line->addr);
       @$.begin.line = INSTRUCTION_LAST;
 
       int jmp_entry = @5.begin.line;
