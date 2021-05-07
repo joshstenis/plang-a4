@@ -119,7 +119,7 @@ construct_while :
     T_WHILE 
     {
       // First semantic action.
-      // TODO: Store the next instruction entry in the parser's stack
+      // TODO: Store the next instruction entry in the parsers stack
       @$.begin.line = INSTRUCTION_NEXT;
     }
     T_LPAR 
@@ -145,12 +145,12 @@ construct_while :
     }
     ;
 
-construct_repeat: 
+construct_repeat : 
     T_REPEAT
     {
       // First semantic action
       // TODO: store in the stack the entry number of the next instruction to be generated (use @$.begin.line instead of $$)
-      @$.begin.line = DEFINE_ME;
+      @$.begin.line = INSTRUCTION_NEXT;
     }
     stmt_list 
     T_UNTIL 
@@ -161,10 +161,10 @@ construct_repeat:
       // Second semantic action.
       // TODO: Retrieve the value stored in the stack in the first semantic action
       // above (the second symbol)
-      int jump_dst = DEFINE_ME;
+      int jump_dst = @1.begin.line;
       // TODO: Generate a jump-if-zero (OP_JZ) to the address stored in the first semantic
       // action of this rule
-      itab_instruction_add (itab, OP_JZ, DEFINE_ME, NOARG, jump_dst);
+      itab_instruction_add (itab, OP_JZ, $6->addr, NOARG, jump_dst);
     }
     ;
 
@@ -236,9 +236,9 @@ assignment : T_ID arr_index T_ASSIGN a_expr
         temp = make_temp (symtab, sym->datatype);
         // TASK: Complete the four TBD_ARG in both calls to itab_instruction_add.
         if (sym->datatype == DTYPE_INT)
-          itab_instruction_add (itab, OP_CAST_FLOAT2INT, TBD_ARG, UNUSED_ARG, TBD_ARG);
+          itab_instruction_add (itab, OP_CAST_FLOAT2INT, src_temp->addr, UNUSED_ARG, sym->addr);
         else
-          itab_instruction_add (itab, OP_CAST_INT2FLOAT, TBD_ARG, UNUSED_ARG, TBD_ARG);
+          itab_instruction_add (itab, OP_CAST_INT2FLOAT, src_temp->addr, UNUSED_ARG, sym->addr);
 
         // Final store to the array will use the intermediate variable resulting from the cast.
         src_temp = temp;
@@ -261,7 +261,7 @@ assignment : T_ID arr_index T_ASSIGN a_expr
 
         // TASK: Complete the two TBD_ARG in the following call to itab_instruction_add.
         // HINT: See the code corresponding to OP_LOAD_ARRAY_VAL_*
-        itab_instruction_add (itab, opcode, TBD_ARG, $2->addr, TBD_ARG);
+        itab_instruction_add (itab, opcode, temp->addr, sym->addr, $2->addr);
       }
       else
       {
