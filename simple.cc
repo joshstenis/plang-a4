@@ -841,9 +841,9 @@ namespace yy {
         temp = make_temp (symtab, sym->datatype);
         // TASK: Complete the four TBD_ARG in both calls to itab_instruction_add.
         if (sym->datatype == DTYPE_INT)
-          itab_instruction_add (itab, OP_CAST_FLOAT2INT, src_temp->addr, UNUSED_ARG, sym->addr);
+          itab_instruction_add (itab, OP_CAST_FLOAT2INT, temp->addr, UNUSED_ARG, src_temp->addr);
         else
-          itab_instruction_add (itab, OP_CAST_INT2FLOAT, src_temp->addr, UNUSED_ARG, sym->addr);
+          itab_instruction_add (itab, OP_CAST_INT2FLOAT, temp->addr, UNUSED_ARG, src_temp->addr);
 
         // Final store to the array will use the intermediate variable resulting from the cast.
         src_temp = temp;
@@ -866,7 +866,7 @@ namespace yy {
 
         // TASK: Complete the two TBD_ARG in the following call to itab_instruction_add.
         // HINT: See the code corresponding to OP_LOAD_ARRAY_VAL_*
-        itab_instruction_add (itab, opcode, temp->addr, sym->addr, yystack_[2].value.as < symbol_t* > ()->addr);
+        itab_instruction_add (itab, opcode, sym->addr, yystack_[2].value.as < symbol_t* > ()->addr, src_temp->addr);
       }
       else
       {
